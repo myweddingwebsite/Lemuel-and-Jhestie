@@ -134,9 +134,11 @@ section{padding-block:56px 40px;scroll-margin-top:56px}
 .group{margin-top:30px;text-align:center}
 .group .script{font-size:clamp(2rem,9.5vw,2.6rem)}
 .names-list{list-style:none;margin:8px 0 0;padding:0;font-family:var(--f-caps);font-size:clamp(.82rem,3.7vw,.95rem);letter-spacing:.06em;line-height:1.75;text-transform:uppercase}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 6px}
 .fitbox{container-type:inline-size;min-width:0}
-.fitbox .names-list{white-space:nowrap;letter-spacing:.02em;font-size:min(.95rem,2.35vw);font-size:min(.95rem,4.7cqi)}
+.fitbox .names-list{white-space:nowrap;letter-spacing:0;font-size:min(.95rem,2.35vw);font-size:min(.95rem,4.7cqi)}
+.pairs:has(.fitbox){gap:8px}
+.pairs .script{white-space:nowrap;font-size:clamp(1.45rem,6.6vw,2.3rem)}
 .pairs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
 .pairs .group{margin-top:0}
 .pairs .script{font-size:clamp(1.7rem,8vw,2.3rem)}
@@ -272,25 +274,25 @@ footer small{display:block;margin-top:10px;font-family:var(--f-caps);font-size:1
     <div class="group">
       <h3 class="script">Principal Sponsors</h3>
       <div class="cols">
-        <div class="fitbox"><ul class="names-list">
+        <div class="fitbox" data-fit="ps"><ul class="names-list">
           <li>PCPT. Jonathan David</li><li>PLTCOL Danilo U. Driz Jr.</li><li>PCMS Menard Punongbayan</li><li>Mr. Emeterio Magnaye</li><li>Mr. Emmanuel De Roxas</li><li>Mr. Fernando Tomaco</li><li>Mr. Rodrigo Munar</li><li>Mr. Romy Serrano</li><li>Mr. Erwin Tolentino</li><li>Mr. Manny Balmaceda</li>
         </ul></div>
-        <div class="fitbox"><ul class="names-list">
+        <div class="fitbox" data-fit="ps"><ul class="names-list">
           <li>Mrs. Maria Carina Potestades</li><li>Ms. Maricel Atanacio</li><li>Ms. Mary Joy Bartolo</li><li>Mrs. Milagros Magnaye</li><li>Mrs. Janet P. Cruz</li><li>Mrs. Cherry D.R Lapay</li><li>Mrs. Marivic De Roxas</li><li>Mrs. Elvie Claudio</li><li>Mrs. Meliza Del Mundo</li><li>Mrs. Elvie Eulalio</li>
         </ul></div>
       </div>
     </div>
 
     <div class="pairs">
-      <div class="group fitbox"><h3 class="script">Best Man</h3><ul class="names-list"><li>Aaron Christian H. De Roxas</li></ul></div>
-      <div class="group fitbox"><h3 class="script">Maid of Honor</h3><ul class="names-list"><li>Jhoana T. Munar</li></ul></div>
+      <div class="group fitbox" data-fit="bm"><h3 class="script">Best Man</h3><ul class="names-list"><li>Aaron Christian H. De Roxas</li></ul></div>
+      <div class="group fitbox" data-fit="bm"><h3 class="script">Maid of Honor</h3><ul class="names-list"><li>Jhoana T. Munar</li></ul></div>
     </div>
 
     <div class="divider" style="margin-top:44px" aria-hidden="true"><span class="caps" style="font-size:11px;letter-spacing:.22em">Second Sponsors</span></div>
 
     <div class="pairs">
-      <div class="group fitbox"><h3 class="script">Ring Bearer</h3><ul class="names-list"><li>Adriel Destin Munar</li></ul></div>
-      <div class="group fitbox"><h3 class="script">Bible Bearer</h3><ul class="names-list"><li>Zack Gabriel B. De Roxas</li></ul></div>
+      <div class="group fitbox" data-fit="rb"><h3 class="script">Ring Bearer</h3><ul class="names-list"><li>Adriel Destin Munar</li></ul></div>
+      <div class="group fitbox" data-fit="rb"><h3 class="script">Bible Bearer</h3><ul class="names-list"><li>Zack Gabriel B. De Roxas</li></ul></div>
     </div>
     <div class="group">
       <h3 class="script">Coin Bearer</h3>
@@ -307,11 +309,11 @@ footer small{display:block;margin-top:10px;font-family:var(--f-caps);font-size:1
     </div>
 
     <div class="pairs">
-      <div class="group fitbox">
+      <div class="group fitbox" data-fit="gb">
         <h3 class="script">Groomsmen</h3>
         <ul class="names-list"><li>John Gerald De Roxas</li><li>Ivan Michael De Roxas</li><li>Red Neil Llanera</li><li>Christian Dominic Martin</li><li>Johnlloyd Tomaca</li><li>Guel Dhanielle Esmino</li><li>Pat. Joren D. Sentorias</li><li>Pat. Michael John Dolcero</li><li>Pat. Melvin Daño</li><li>Pat. Benigno M. Arcilla Jr.</li></ul>
       </div>
-      <div class="group fitbox">
+      <div class="group fitbox" data-fit="gb">
         <h3 class="script">Bridesmaids</h3>
         <ul class="names-list"><li>Jillian P. Cruz</li><li>Laica Moreno</li><li>Ailez Jherzie Tolentino</li><li>Allyana Marie G. Guanzon</li><li>Jessa Brianna T. Panes</li><li>Jhaneil Anne Temenia</li><li>Ginalyn Ilan</li><li>Mary Anne Torres</li><li>Nyca C. Solomon</li><li>Angela Christine De Roxas</li></ul>
       </div>
@@ -391,6 +393,29 @@ footer small{display:block;margin-top:10px;font-family:var(--f-caps);font-size:1
     links.forEach(function(a,i){ a.classList.toggle("on", i===idx); });
   }
   window.addEventListener("scroll", spy, {passive:true}); spy();
+  function fitNames(){
+    var groups = {};
+    document.querySelectorAll("[data-fit]").forEach(function(box){ (groups[box.dataset.fit] = groups[box.dataset.fit] || []).push(box.querySelector(".names-list")); });
+    Object.keys(groups).forEach(function(k){
+      var lists = groups[k], base = 20, scale = Infinity;
+      lists.forEach(function(ul){ ul.style.fontSize = base + "px"; });
+      lists.forEach(function(ul){
+        var w = ul.clientWidth;
+        ul.querySelectorAll("li").forEach(function(li){ var t = li.scrollWidth; if(t > 0) scale = Math.min(scale, w / t); });
+      });
+      var size = Math.min(17, base * scale * 0.97);
+      lists.forEach(function(ul){ ul.style.fontSize = size.toFixed(2) + "px"; });
+    });
+    document.querySelectorAll(".pairs").forEach(function(row){
+      var hs = Array.prototype.slice.call(row.querySelectorAll(".script")), f = Infinity;
+      hs.forEach(function(h){ h.style.fontSize = ""; });
+      hs.forEach(function(h){ var cs = parseFloat(getComputedStyle(h).fontSize); f = Math.min(f, h.scrollWidth > h.clientWidth ? cs * h.clientWidth / h.scrollWidth * 0.97 : cs); });
+      hs.forEach(function(h){ h.style.fontSize = f.toFixed(2) + "px"; });
+    });
+  }
+  fitNames();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitNames);
+  var rt; window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(fitNames, 120); });
 })();
 </script>
 
