@@ -134,8 +134,9 @@ section{padding-block:56px 40px;scroll-margin-top:56px}
 .group{margin-top:30px;text-align:center}
 .group .script{font-size:clamp(2rem,9.5vw,2.6rem)}
 .names-list{list-style:none;margin:8px 0 0;padding:0;font-family:var(--f-caps);font-size:clamp(.82rem,3.7vw,.95rem);letter-spacing:.06em;line-height:1.75;text-transform:uppercase}
-.cols{display:grid;grid-template-columns:1fr;gap:4px 18px}
-@media (min-width:520px){.cols{grid-template-columns:1fr 1fr}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.fitbox{container-type:inline-size;min-width:0}
+.fitbox .names-list{white-space:nowrap;letter-spacing:.02em;font-size:min(.95rem,2.35vw);font-size:min(.95rem,4.7cqi)}
 .pairs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
 .pairs .group{margin-top:0}
 .pairs .script{font-size:clamp(1.7rem,8vw,2.3rem)}
@@ -271,12 +272,12 @@ footer small{display:block;margin-top:10px;font-family:var(--f-caps);font-size:1
     <div class="group">
       <h3 class="script">Principal Sponsors</h3>
       <div class="cols">
-        <ul class="names-list">
+        <div class="fitbox"><ul class="names-list">
           <li>PCPT. Jonathan David</li><li>PLTCOL Danilo U. Driz Jr.</li><li>PCMS Menard Punongbayan</li><li>Mr. Emeterio Magnaye</li><li>Mr. Emmanuel De Roxas</li><li>Mr. Fernando Tomaco</li><li>Mr. Rodrigo Munar</li><li>Mr. Romy Serrano</li><li>Mr. Erwin Tolentino</li><li>Mr. Manny Balmaceda</li>
-        </ul>
-        <ul class="names-list">
+        </ul></div>
+        <div class="fitbox"><ul class="names-list">
           <li>Mrs. Maria Carina Potestades</li><li>Ms. Maricel Atanacio</li><li>Ms. Mary Joy Bartolo</li><li>Mrs. Milagros Magnaye</li><li>Mrs. Janet P. Cruz</li><li>Mrs. Cherry D.R Lapay</li><li>Mrs. Marivic De Roxas</li><li>Mrs. Elvie Claudio</li><li>Mrs. Meliza Del Mundo</li><li>Mrs. Elvie Eulalio</li>
-        </ul>
+        </ul></div>
       </div>
     </div>
 
@@ -306,11 +307,11 @@ footer small{display:block;margin-top:10px;font-family:var(--f-caps);font-size:1
     </div>
 
     <div class="pairs">
-      <div class="group">
+      <div class="group fitbox">
         <h3 class="script">Groomsmen</h3>
         <ul class="names-list"><li>John Gerald De Roxas</li><li>Ivan Michael De Roxas</li><li>Red Neil Llanera</li><li>Christian Dominic Martin</li><li>Johnlloyd Tomaca</li><li>Guel Dhanielle Esmino</li><li>Pat. Joren D. Sentorias</li><li>Pat. Michael John Dolcero</li><li>Pat. Melvin Daño</li><li>Pat. Benigno M. Arcilla Jr.</li></ul>
       </div>
-      <div class="group">
+      <div class="group fitbox">
         <h3 class="script">Bridesmaids</h3>
         <ul class="names-list"><li>Jillian P. Cruz</li><li>Laica Moreno</li><li>Ailez Jherzie Tolentino</li><li>Allyana Marie G. Guanzon</li><li>Jessa Brianna T. Panes</li><li>Jhaneil Anne Temenia</li><li>Ginalyn Ilan</li><li>Mary Anne Torres</li><li>Nyca C. Solomon</li><li>Angela Christine De Roxas</li></ul>
       </div>
